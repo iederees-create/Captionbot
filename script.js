@@ -1,3 +1,4 @@
+// Sample captions array (replace with your own captions)
 const captions = [
     "🌟 Join thousands of traders on Deriv! Explore the platform designed for everyone, from beginners to pros: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #Deriv #TradingCommunity #Forex #Investment #Beginners #WomenInTrading #FinancialLiteracy #Empowerment",
     "🚀 Take your trading to the next level with Deriv! Click here to get started: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #ForexTrading #Investing #FinancialFreedom #WomenWhoTrade #Deriv",
@@ -47,11 +48,11 @@ const captions = [
     "💖 Join the movement of women trading confidently with Deriv: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #WomenWhoTrade #Empowerment #Deriv"
 ];
 
-
-// Display captions in the container
+// Dynamically add captions to the DOM
 const captionContainer = document.getElementById('caption-container');
 captions.forEach(caption => {
     const captionDiv = document.createElement('div');
+    captionDiv.className = 'caption';
     captionDiv.textContent = caption;
     captionContainer.appendChild(captionDiv);
 });
@@ -59,5 +60,15 @@ captions.forEach(caption => {
 // Copy captions to clipboard
 document.getElementById('copy-button').addEventListener('click', () => {
     const textToCopy = captions.join('\n');
-    navigator.clipboard.writeText(textToCopy);
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        // Show success message
+        const successMessage = document.getElementById('success-message');
+        successMessage.textContent = 'Captions copied to clipboard!';
+        successMessage.style.display = 'block';
+
+        // Hide message after 2 seconds
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+        }, 2000);
+    });
 });
