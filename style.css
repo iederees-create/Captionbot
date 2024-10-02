@@ -8,6 +8,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-image: url('https://your-death-star-background-image-url'); /* Replace with your Death Star background image URL */
+    background-size: cover;
+    background-position: center;
 }
 
 .container {
@@ -15,7 +18,7 @@ body {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    background-color: #282828;
+    background-color: rgba(40, 40, 40, 0.8);
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
@@ -33,51 +36,34 @@ main {
 }
 
 .captions-container {
-    background: #333;
-    border-radius: 5px;
-    padding: 15px;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.captions-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 .caption-item {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #444;
-    transition: background 0.3s;
+    background: #333;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s;
 }
 
 .caption-item:hover {
-    background-color: #444;
+    transform: scale(1.05);
 }
 
-.caption-display-container {
-    text-align: center;
-}
-
-.caption-display {
-    font-size: 1.2rem;
-    background: #444;
-    padding: 15px;
-    border-radius: 5px;
-    min-height: 80px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #00ff00;
+.caption-text {
+    flex: 1;
+    margin-right: 10px;
 }
 
 .copy-button {
     background-color: #00b4d8;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     color: #ffffff;
     cursor: pointer;
     border-radius: 5px;
@@ -97,11 +83,7 @@ main {
         font-size: 1.5rem;
     }
 
-    .caption-display {
-        font-size: 1rem;
-    }
-
     .copy-button {
-        padding: 8px 16px;
+        padding: 8px 12px;
     }
 }
