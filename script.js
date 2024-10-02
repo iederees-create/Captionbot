@@ -47,28 +47,24 @@ const captions = [
     "💪 Take the first step towards trading success with Deriv! Click here: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #FirstStep #TradingSuccess #Deriv",
     "💖 Join the movement of women trading confidently with Deriv: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #WomenWhoTrade #Empowerment #Deriv"
 ];
-
 // Dynamically add captions to the DOM
 const captionContainer = document.getElementById('caption-container');
 captions.forEach(caption => {
     const captionDiv = document.createElement('div');
     captionDiv.className = 'caption';
     captionDiv.textContent = caption;
-    captionContainer.appendChild(captionDiv);
-});
 
-// Copy captions to clipboard
-document.getElementById('copy-button').addEventListener('click', () => {
-    const textToCopy = captions.join('\n');
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        // Show success message
-        const successMessage = document.getElementById('success-message');
-        successMessage.textContent = 'Captions copied to clipboard!';
-        successMessage.style.display = 'block';
-
-        // Hide message after 2 seconds
-        setTimeout(() => {
-            successMessage.style.display = 'none';
-        }, 2000);
+    // Create a copy button
+    const copyButton = document.createElement('button');
+    copyButton.className = 'copy-button';
+    copyButton.textContent = 'Copy';
+    copyButton.addEventListener('click', () => {
+        navigator.clipboard.writeText(caption).then(() => {
+            // Show success message (could also be an alert)
+            alert('Caption copied to clipboard!');
+        });
     });
+
+    captionDiv.appendChild(copyButton);
+    captionContainer.appendChild(captionDiv);
 });
