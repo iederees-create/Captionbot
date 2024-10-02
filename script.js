@@ -1,5 +1,6 @@
-// Sample captions array (replace with your own captions)
-const captions = [
+document.addEventListener("DOMContentLoaded", function () {
+    const captionContainer = document.getElementById('caption-container');
+   const captions = [
     "🌟 Join thousands of traders on Deriv! Explore the platform designed for everyone, from beginners to pros: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #Deriv #TradingCommunity #Forex #Investment #Beginners #WomenInTrading #FinancialLiteracy #Empowerment",
     "🚀 Take your trading to the next level with Deriv! Click here to get started: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #ForexTrading #Investing #FinancialFreedom #WomenWhoTrade #Deriv",
     "💹 Master the markets with ease. Sign up on Deriv and make informed trades: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #Forex #Deriv #InvestSmart #MarketAnalysis #WomenInFinance",
@@ -47,26 +48,36 @@ const captions = [
     "💪 Take the first step towards trading success with Deriv! Click here: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #FirstStep #TradingSuccess #Deriv",
     "💖 Join the movement of women trading confidently with Deriv: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #WomenWhoTrade #Empowerment #Deriv"
 ];
+    // Create stars dynamically
+    const numStars = 50; // Number of stars
+    for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        const top = Math.random() * 100; // Random position
+        const left = Math.random() * 100;
+        star.style.top = `${top}%`;
+        star.style.left = `${left}%`;
+        document.body.appendChild(star);
+    }
 
-// Dynamically add captions to the DOM
-const captionContainer = document.getElementById('caption-container');
-captions.forEach(caption => {
-    const captionDiv = document.createElement('div');
-    captionDiv.className = 'caption';
-    captionDiv.textContent = caption;
+    captions.forEach(caption => {
+        const captionElement = document.createElement('div');
+        captionElement.classList.add('caption');
+        captionElement.textContent = caption;
 
-    // Create a copy button
-    const copyButton = document.createElement('button');
-    copyButton.className = 'copy-button';
-    copyButton.textContent = 'Copy';
-    
-    // Copy caption to clipboard on button click
-    copyButton.addEventListener('click', () => {
-        navigator.clipboard.writeText(caption).then(() => {
-            alert('Caption copied to clipboard!');
-        });
+        const copyButton = document.createElement('button');
+        copyButton.textContent = "Copy";
+        copyButton.classList.add('copy-button');
+
+        copyButton.onclick = function () {
+            navigator.clipboard.writeText(caption)
+                .then(() => {
+                    // Optionally show a notification or feedback
+                    console.log('Caption copied to clipboard!');
+                });
+        };
+
+        captionElement.appendChild(copyButton);
+        captionContainer.appendChild(captionElement);
     });
-
-    captionDiv.appendChild(copyButton);
-    captionContainer.appendChild(captionDiv);
 });
