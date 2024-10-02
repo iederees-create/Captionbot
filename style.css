@@ -1,0 +1,59 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000;
+    color: #ffe81f;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.scrolling-text {
+    perspective: 1000px;
+    transform: rotateX(25deg);
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #fff;
+    text-shadow: 0 0 20px #ffe81f, 0 0 30px #ffe81f, 0 0 40px #ffe81f;
+}
+
+.captions-container {
+    width: 90%;
+    max-width: 800px;
+    overflow: hidden;
+    animation: scroll 60s linear infinite;
+}
+
+.caption {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.caption a {
+    color: #ffe81f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.caption a:hover {
+    text-decoration: underline;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateZ(0) translateY(100%);
+    }
+    100% {
+        transform: translateZ(-1000px) translateY(-100%);
+    }
+}
