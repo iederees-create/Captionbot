@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deriv Trading Captions - Death Star Edition</title>
+    <title>Deriv Captions Selector</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="death-star-container">
-        <h1 class="title">Deriv Trading Captions</h1>
-        <div id="captions" class="captions-container"></div>
+    <div class="container">
+        <header>
+            <h1>Deriv Captions Selector</h1>
+        </header>
+
+        <main>
+            <div class="captions-container">
+                <ul id="captions-list" class="captions-list">
+                    <!-- Captions list will be generated here -->
+                </ul>
+            </div>
+            <div class="caption-display-container">
+                <p id="caption-display" class="caption-display">Select a caption to view here...</p>
+                <button id="copy-button" class="copy-button">Copy Caption</button>
+            </div>
+        </main>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
