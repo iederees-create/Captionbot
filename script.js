@@ -48,33 +48,16 @@ const captions = [
 ];
 
 
+// Display captions in the container
+const captionContainer = document.getElementById('caption-container');
+captions.forEach(caption => {
+    const captionDiv = document.createElement('div');
+    captionDiv.textContent = caption;
+    captionContainer.appendChild(captionDiv);
+});
 
-const captionsList = document.getElementById('captions-list');
-
-captions.forEach((caption) => {
-    const listItem = document.createElement('li');
-    listItem.classList.add('caption-item');
-
-    const captionText = document.createElement('span');
-    captionText.classList.add('caption-text');
-    captionText.textContent = caption;
-
-    const copyButton = document.createElement('button');
-    copyButton.classList.add('copy-button');
-    copyButton.textContent = 'Copy';
-
-    // Copy to clipboard functionality
-    copyButton.addEventListener('click', () => {
-        navigator.clipboard.writeText(caption)
-            .then(() => {
-                alert('Caption copied to clipboard!');
-            })
-            .catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-    });
-
-    listItem.appendChild(captionText);
-    listItem.appendChild(copyButton);
-    captionsList.appendChild(listItem);
+// Copy captions to clipboard
+document.getElementById('copy-button').addEventListener('click', () => {
+    const textToCopy = captions.join('\n');
+    navigator.clipboard.writeText(textToCopy);
 });
