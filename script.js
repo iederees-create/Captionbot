@@ -47,6 +47,7 @@ const captions = [
     "💪 Take the first step towards trading success with Deriv! Click here: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #FirstStep #TradingSuccess #Deriv",
     "💖 Join the movement of women trading confidently with Deriv: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #WomenWhoTrade #Empowerment #Deriv"
 ];
+
 // Dynamically add captions to the DOM
 const captionContainer = document.getElementById('caption-container');
 captions.forEach(caption => {
@@ -58,9 +59,10 @@ captions.forEach(caption => {
     const copyButton = document.createElement('button');
     copyButton.className = 'copy-button';
     copyButton.textContent = 'Copy';
+    
+    // Copy caption to clipboard on button click
     copyButton.addEventListener('click', () => {
         navigator.clipboard.writeText(caption).then(() => {
-            // Show success message (could also be an alert)
             alert('Caption copied to clipboard!');
         });
     });
