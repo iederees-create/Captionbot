@@ -1,89 +1,61 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a;
-    color: #ffffff;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 20px;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-image: url('https://your-death-star-background-image-url'); /* Replace with your Death Star background image URL */
-    background-size: cover;
-    background-position: center;
 }
 
 .container {
-    max-width: 800px;
-    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
     padding: 20px;
-    box-sizing: border-box;
-    background-color: rgba(40, 40, 40, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
+h1 {
     text-align: center;
-    color: #00b4d8;
-    font-size: 2rem;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+#caption-container {
+    margin-bottom: 20px;
 }
 
-.captions-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.caption-item {
-    background: #333;
-    border-radius: 5px;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: transform 0.3s;
-}
-
-.caption-item:hover {
-    transform: scale(1.05);
-}
-
-.caption-text {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.copy-button {
-    background-color: #00b4d8;
-    border: none;
-    padding: 10px 15px;
-    color: #ffffff;
+.caption {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
+    transition: background-color 0.3s;
 }
 
-.copy-button:hover {
-    background-color: #0077b6;
+.caption:hover {
+    background-color: #f9f9f9;
 }
 
-@media screen and (max-width: 600px) {
-    .container {
-        padding: 10px;
-    }
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-    header h1 {
-        font-size: 1.5rem;
-    }
+button:hover {
+    background-color: #218838;
+}
 
-    .copy-button {
-        padding: 8px 12px;
-    }
+.success-message {
+    display: none;
+    color: green;
+    margin-top: 10px;
+    font-weight: bold;
 }
