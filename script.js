@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const captionContainer = document.getElementById('caption-container');
    const captions = [
-    "🌟 Join thousands of traders on Deriv! Explore the platform designed for everyone, from beginners to pros: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #Deriv #TradingCommunity #Forex #Investment #Beginners #WomenInTrading #FinancialLiteracy #Empowerment",
+    "Join thousands of traders on Deriv! Explore the platform designed for everyone, from beginners to pros: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #Deriv #TradingCommunity #Forex #Investment #Beginners #WomenInTrading #FinancialLiteracy #Empowerment",
     "Unlock your potential in the world of forex trading today! 🚀 Exclusive benefits await. Don't miss out—sign up now with Deriv and get started! 💡 #ForexTrading #Deriv #StartNow",
     "Ready to take control of your financial future? Start trading with Deriv today and access free expert resources to help you succeed. 🌟 Click now! 🔗 #TradingSuccess #JoinDeriv",
     "Time is money! ⏳ Join Deriv today and start trading smarter, not harder. Secure your financial future now! #Forex #Deriv #TradeNow",
