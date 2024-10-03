@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "💖 Join the movement of women trading confidently with Deriv: https://track.deriv.com/_KCH6LP9EQxwpl7dR3lTXiGNd7ZgqdRLk/1/ #WomenWhoTrade #Empowerment #Deriv"
 ];
     // Create stars dynamically
-    const numStars = 50; // Number of stars
+    const numStars = 5000000; // Number of stars
     for (let i = 0; i < numStars; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
