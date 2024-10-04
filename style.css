@@ -1,9 +1,80 @@
-#caption-container {
-    font-size: 16px;
-    color: #333;
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    max-width: 600px;
+body {
+    font-family: 'Star Jedi', sans-serif; /* Ensure you have a Star Wars font */
+    background: radial-gradient(circle, rgba(10, 10, 20, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    color: #fff;
+    padding: 20px;
+    margin: 0;
 }
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background for better contrast */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(255, 204, 0, 0.6);
+    border: 2px solid #ffcc00; /* Star Wars gold border */
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em; /* Larger title font size */
+    text-shadow: 2px 2px 5px rgba(255, 204, 0, 0.9); /* Gold text shadow */
+}
+
+#caption-container {
+    margin-bottom: 20px;
+}
+
+.caption {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px; /* Increased padding */
+    margin: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative; /* Position relative for copy button */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background for captions */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.caption:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Starry background effect */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.star:nth-child(1) { width: 2px; height: 2px; top: 20%; left: 30%; }
+.star:nth-child(2) { width: 3px; height: 3px; top: 50%; left: 70%; }
+.star:nth-child(3) { width: 1px; height: 1px; top: 80%; left: 20%; }
+.star:nth-child(4) { width: 4px; height: 4px; top: 30%; left: 90%; }
+.star:nth-child(5) { width: 2px; height: 2px; top: 10%; left: 10%; }
+.star:nth-child(6) { width: 3px; height: 3px; top: 60%; left: 50%; }
+.star:nth-child(7) { width: 1px; height: 1px; top: 40%; left: 80%; }
+.star:nth-child(8) { width: 4px; height: 4px; top: 70%; left: 40%; }
+.star:nth-child(9) { width: 2px; height: 2px; top: 15%; left: 25%; }
+.star:nth-child(10) { width: 3px; height: 3px; top: 85%; left: 60%; }
