@@ -1,83 +1,109 @@
-import os
-from random import choice, randrange
-import pygame as pg
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix Background with Katakana</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrixCanvas"></canvas>
 
-os.environ['SDL_VIDEO_CENTERED'] = '1'
-RES = WIDTH, HEIGHT = 1650, 600
-ALPHA = 100
+  <script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
 
-pg.init()
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-screen = pg.display.set_mode(RES)
-surface = pg.Surface(RES, pg.SRCALPHA)
-surface.set_alpha(ALPHA)
-clock = pg.time.Clock()
+    const katakanaChars = ['゠', 'ァ', 'ア', 'ィ', 'イ', 'ゥ', 'ウ', 'ェ', 'エ', 'ォ', 'オ', 'カ', 'ガ', 'キ', 'ギ', 'ク', 'グ', 'ケ', 'ゲ', 'コ', 
+      'ゴ', 'サ', 'ザ', 'シ', 'ジ', 'ス', 'ズ', 'セ', 'ゼ', 'ソ', 'ゾ', 'タ', 'ダ', 'チ', 'ヂ', 'ッ', 'ツ', 'ヅ', 'テ', 'デ', 'ト', 'ド', 
+      'ナ', 'ニ', 'ヌ', 'ネ', 'ノ', 'ハ', 'バ', 'パ', 'ヒ', 'ビ', 'ピ', 'フ', 'ブ', 'プ', 'ヘ', 'ベ', 'ペ', 'ホ', 'ボ', 'ポ', 'マ', 'ミ', 
+      'ム', 'メ', 'モ', 'ャ', 'ヤ', 'ュ', 'ユ', 'ョ', 'ヨ', 'ラ', 'リ', 'ル', 'レ', 'ロ', 'ヮ', 'ワ', 'ヰ', 'ヱ', 'ヲ', 'ン', 'ヴ', 'ヵ', 
+      'ヶ', 'ヷ', 'ヸ', 'ヹ', 'ヺ', '・', 'ー', 'ヽ', 'ヾ', 'ヿ'];
 
-katakana_chars = ['゠', 'ァ', 'ア', 'ィ', 'イ', 'ゥ', 'ウ', 'ェ', 'エ', 'ォ', 'オ', 'カ', 'ガ', 'キ', 'ギ', 'ク', 'グ', 'ケ', 'ゲ', 'コ',
-                  'ゴ', 'サ', 'ザ', 'シ', 'ジ', 'ス', 'ズ', 'セ', 'ゼ', 'ソ', 'ゾ', 'タ', 'ダ', 'チ', 'ヂ', 'ッ', 'ツ', 'ヅ', 'テ', 'デ',
-                  'ト', 'ド', 'ナ', 'ニ', 'ヌ', 'ネ', 'ノ', 'ハ', 'バ', 'パ', 'ヒ', 'ビ', 'ピ', 'フ', 'ブ', 'プ', 'ヘ', 'ベ', 'ペ', 'ホ',
-                  'ボ', 'ポ', 'マ', 'ミ', 'ム', 'メ', 'モ', 'ャ', 'ヤ', 'ュ', 'ユ', 'ョ', 'ヨ', 'ラ', 'リ', 'ル', 'レ', 'ロ', 'ヮ', 'ワ',
-                  'ヰ', 'ヱ', 'ヲ', 'ン', 'ヴ', 'ヵ', 'ヶ', 'ヷ', 'ヸ', 'ヹ', 'ヺ', '・', 'ー', 'ヽ', 'ヾ', 'ヿ']
+    class Symbol {
+      constructor(x, y, fontSize, speed) {
+        this.x = x;
+        this.y = y;
+        this.y0 = -fontSize;
+        this.fontSize = fontSize;
+        this.speed = speed;
+        this.charChangeSpeed = Math.floor(Math.random() * (40 - 20) + 20);
+        this.value = katakanaChars[Math.floor(Math.random() * katakanaChars.length)];
+        this.fontIncrease = 0;
+      }
 
+      draw(position) {
+        this.fontIncreaseSpeed = Math.floor(this.y / 80);
+        this.fontIncrease = (this.y > 0 && this.y < canvas.height) ? this.fontSize + this.fontIncreaseSpeed : 0;
 
-class Symbol:
-    def __init__(self, x, y, font_size, speed):
-        self.x = x
-        self.y = y
-        self.y0 = - font_size
-        self.font_size = font_size
-        self.speed = speed
-        self.char_change_speed = randrange(20, 40)
-        self.value = choice(katakana_chars)
-        self.font_increase = 0
+        const font = `${this.fontIncrease}px 'MS Mincho'`;
+        const frames = Date.now();
+        if (frames % this.charChangeSpeed === 0) {
+          this.value = katakanaChars[Math.floor(Math.random() * katakanaChars.length)];
+        }
 
-    def draw(self, position):
-        self.font_increase_speed = int(self.y / 80)
-        self.font_increase = self.font_size + self.font_increase_speed if 0 < self.y < HEIGHT else 0
-        font = pg.font.Font('font/ms mincho.ttf', self.font_increase)
-        frames = pg.time.get_ticks()
-        if not frames % self.char_change_speed:
-            self.value = choice(katakana_chars)
+        this.y = (this.y < canvas.height) ? this.y + this.speed : this.y0;
 
-        self.y = self.y + self.speed if self.y < HEIGHT else self.y0
+        let charColor;
+        if (position < 8) {
+          charColor = `rgb(${255 - 32 * position}, 255, ${255 - 32 * position})`;
+        } else {
+          charColor = `rgb(0, ${255 - 22 * (position - 8)}, 0)`;
+        }
 
-        if position < 8:
-            self.char = font.render(self.value, True, (255 - 32 * position, 255, 255 - 32 * position))
-        if position >= 8:
-            self.char = font.render(self.value, True, (0, 255 - 22 * (position - 8), 0))
+        ctx.font = font;
+        ctx.fillStyle = charColor;
+        ctx.fillText(this.value, this.x, this.y);
+      }
+    }
 
-        screen.blit(self.char, (self.x, self.y))
+    class SymbolColumn {
+      constructor(x, y, fontSize) {
+        this.columnHeight = Math.floor(Math.random() * (20 - 5) + 5);
+        this.speed = Math.floor(Math.random() * (20 - 5) + 5);
+        this.fontSize = fontSize;
+        this.symbols = [];
 
+        for (let i = y; i > y - (this.fontSize + 10) * this.columnHeight; i -= (this.fontSize + 10)) {
+          this.symbols.push(new Symbol(x, i, this.fontSize, this.speed));
+        }
+      }
 
-class SymbolColumn:
-    def __init__(self, x, y, font_size):
-        self.column_height = randrange(5, 20)
-        self.speed = randrange(5, 20)
-        self.font_size = font_size
-        self.symbols = [Symbol(x=x, y=i, font_size=self.font_size, speed=self.speed) for i in
-                        range(y, y - (self.font_size + 10) * self.column_height, -(self.font_size + 10))]
+      draw() {
+        this.symbols.forEach((symbol, index) => {
+          symbol.draw(index);
+        });
+      }
+    }
 
-    def draw(self):
-        [symbol.draw(position=i) for i, symbol in enumerate(self.symbols)]
+    const symbolColumns = [];
+    for (let i = 100; i < canvas.width - 100; i += 200) {
+      symbolColumns.push(new SymbolColumn(i, 0, 20));
+    }
 
+    function animate() {
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-symbol_columns = [SymbolColumn(x=i, y=0, font_size=20) for i in range(100, WIDTH - 100, 200)]
+      symbolColumns.forEach(column => {
+        column.draw();
+      });
 
+      requestAnimationFrame(animate);
+    }
 
-def main():
-    running = True
-    while running:
-        screen.blit(surface, (0, 0))
-        surface.fill(pg.Color('black'))
-
-        [symbol_column.draw() for symbol_column in symbol_columns]
-
-        [exit() for event in pg.event.get() if event.type == pg.QUIT]
-
-        pg.display.update()
-
-        clock.tick(60)
-
-
-if __name__ == "__main__":
-    main()
+    animate();
+  </script>
+</body>
+</html>
